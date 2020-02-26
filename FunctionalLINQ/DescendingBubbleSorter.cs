@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
+
 
 namespace FunctionalLINQ
 {
     class DescendingBubbleSorter
     {
         public delegate bool IsASmallerThanBDelegate(object a, object b);
-        public static void Sort(object[] objects, IsASmallerThanBDelegate IsASmallerThanB)
+        public static void Sort(object[] objects, Func<object, object, bool> IsASmallerThanB)
         {
             bool swapped;
             do
@@ -25,6 +27,7 @@ namespace FunctionalLINQ
                 }
             } while (swapped);
         }
+
        /* public static int IsASmallerThanB_Name(object a, object b)
         {
             return (((Country)a).Name).CompareTo(((Country)b).Name);
@@ -37,6 +40,7 @@ namespace FunctionalLINQ
         {
             return (((Country)a).Population < ((Country)b).Population);
         }
-       
+
+        
     }
 }
