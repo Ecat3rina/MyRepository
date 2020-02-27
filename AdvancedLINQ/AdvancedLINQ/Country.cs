@@ -6,9 +6,10 @@ namespace AdvancedLINQ
 {
     public class Country
     {
-        public IEnumerable<Nationality> Nationalities { get; set; }
+        public IEnumerable<Ethnic_Group> Ethnic_Groups { get; set; }
         public string Name { get; set; }
         public int Area { get; set; }
         public int Population { get; set; }
+        public Continent Which_Continent { get; set; }
     }
 }
