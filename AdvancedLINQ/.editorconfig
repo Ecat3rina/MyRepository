@@ -1,4 +1,0 @@
-﻿[*.cs]
-
-# IDE0050: Convert to tuple
-dotnet_diagnostic.IDE0050.severity = none
