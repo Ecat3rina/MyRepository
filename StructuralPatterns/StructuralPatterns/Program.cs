@@ -27,41 +27,40 @@ namespace StructuralPatterns
 
             #region decorator
 
-            Calculator calculator = new Calculator();
+            BasicCalculator calculator = new BasicCalculator();
             Console.WriteLine("Regular Calculator:");
             Console.WriteLine(calculator.Add(4, 3));
             BetterCalculator betterCalculator = new BetterCalculator(calculator);
             Console.WriteLine("Decorated Calculator:");
             Console.WriteLine(betterCalculator.Add(4, 3));
             Console.WriteLine("Also subtract");
-            Console.WriteLine(betterCalculator.Subtract(4, 3));
-            ScientificCalculator scientificCalculator = new ScientificCalculator(calculator);
+            //Console.WriteLine(betterCalculator.Subtract(4, 3));
+            ScientificCalculator scientificCalculator = new ScientificCalculator(betterCalculator);
             Console.WriteLine("Scientific Calculator:");
-            Console.WriteLine(scientificCalculator.Add(4, 3));
-            Console.WriteLine("Also subtract");
-            Console.WriteLine(scientificCalculator.Subtract(4, 3));
+            Console.WriteLine(scientificCalculator.Add(4, 3));         
             Console.WriteLine("Also multiply");
-            Console.WriteLine(scientificCalculator.Multiply(4, 3));
+          //  Console.WriteLine(scientificCalculator.Multiply(4, 3));
             #endregion
 
         }
     }
-    class Calculator : ICalculator
+    abstract class Calculator
+    {
+        public abstract int Add(int x, int y);
+    }
+    class BasicCalculator : Calculator
     {
         public override int Add(int x, int y)
         {
             return x + y;
         }
     }
-    abstract class ICalculator
+    
+    class Decorator : Calculator
     {
-        public abstract int Add(int x, int y);
-    }
-    class Decorator : ICalculator
-    {
-        ICalculator myCalc { get; set; }
+        Calculator myCalc { get; set; }
 
-        public Decorator(ICalculator calculator)
+        public Decorator(Calculator calculator)
         {
             this.myCalc = calculator;
         }
@@ -74,21 +73,29 @@ namespace StructuralPatterns
 
     class BetterCalculator : Decorator
     {
-        public BetterCalculator(ICalculator calc) : base(calc) { }
+        public BetterCalculator(Calculator calc) : base(calc) { }
 
-        public int Subtract(int x, int y)
+        public override int Add(int x, int y)
         {
-            return x - y;
+            return base.Add(x,y)+2;
         }
+        //public int Subtract(int x, int y)
+        //{
+        //    return x - y;
+        //}
     }
-    class ScientificCalculator : BetterCalculator
+    class ScientificCalculator : Decorator
     {
-        public ScientificCalculator(ICalculator calc) : base(calc) { }
+        public ScientificCalculator(Calculator calc) : base(calc) { }
 
-        public int Multiply(int x, int y)
+        public override int Add(int x, int y)
         {
-            return x * y;
+            return base.Add(x, y) + 10;
         }
+        //public int Multiply(int x, int y)
+        //{
+        //    return x * y;
+        //}
     }
 }
 

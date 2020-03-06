@@ -4,7 +4,11 @@ using System.Text;
 
 namespace StructuralPatterns
 {
-    class RealInternetAccess:IInternetAccess
+    public interface IInternetAccess
+    {
+        void grantInternetAccess();
+    }
+    class RealInternetAccess : IInternetAccess
     {
         private string User_Name;
 

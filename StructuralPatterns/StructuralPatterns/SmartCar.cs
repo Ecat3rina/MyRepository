@@ -5,9 +5,9 @@ using System.Threading.Channels;
 
 namespace StructuralPatterns
 {
-     public abstract class SmartCar
+    public abstract class SmartCar
     {
-        public virtual void OpenDoor() {}
+        public virtual void OpenDoor() { }
         public virtual void CloseDoor() { }
         public virtual void PlayMusic() { }
         public virtual void StopMusic() { }
@@ -16,12 +16,12 @@ namespace StructuralPatterns
         public virtual void CallContact() { }
     }
 
-     public class OrderCar : SmartCar
-     {
-         public override void OpenDoor()
-         { 
-             new MechanismSystem().OpenDoor();
-         }
+    public class OrderCar : SmartCar
+    {
+        public override void OpenDoor()
+        {
+            new MechanismSystem().OpenDoor();
+        }
         public override void CloseDoor()
         {
             new MechanismSystem().CloseDoor();
@@ -54,12 +54,12 @@ namespace StructuralPatterns
         public override void OpenDoor()
         {
             Console.WriteLine("The door has been opened");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
         public override void CloseDoor()
         {
             Console.WriteLine("The door has been closed");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
     }
 
@@ -68,12 +68,12 @@ namespace StructuralPatterns
         public override void PlayMusic()
         {
             Console.WriteLine("Music is playing");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
         public override void StopMusic()
         {
             Console.WriteLine("Music stopped playing");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
     }
 
@@ -82,18 +82,18 @@ namespace StructuralPatterns
         public override void ConnectBluetooth()
         {
             Console.WriteLine("Bluetooth has been connected");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
         public override void DisconnectBluetooth()
         {
             Console.WriteLine("Bluetooth has been disconnected");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
 
         public override void CallContact()
         {
             Console.WriteLine("Select which contact do you want to call");
-            Console.WriteLine("Anything else to do, BOSS?");
+            Console.WriteLine("Anything else to do?");
         }
     }
 }

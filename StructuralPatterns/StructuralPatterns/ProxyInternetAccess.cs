@@ -25,7 +25,6 @@ namespace StructuralPatterns
             else
             Console.WriteLine($"No Internet Access for  {this.User_Name}");
         }
-
         public bool InternetBillPay()
         {
             return false;
